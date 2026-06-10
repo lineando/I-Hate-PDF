@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="/imgs/coracao.webp" type="image/webp">
+  <title>Juntador de PDFs</title>
+
+  <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+  <div class="header">
+    <h1>📎 Juntador de PDFs</h1>
+    <p>Arraste e solte os arquivos abaixo. Reordene arrastando pelo ícone ≡.</p>
+  </div>
+
+  <div class="drop-zone" id="drop-zone">
+    <span class="icon">📄</span>
+    <p>
+      Arraste os PDFs aqui ou
+      <span onclick="document.getElementById('file-input').click()">
+        clique para escolher
+      </span>
+    </p>
+    <small>Vários arquivos ao mesmo tempo são suportados</small>
+  </div>
+
+  <input type="file" id="file-input" accept=".pdf" multiple>
+
+  <div class="file-list" id="file-list"></div>
+
+  <p class="list-hint" id="list-hint" style="display:none">
+    Arraste pelo ≡ para mudar a ordem
+  </p>
+
+  <div class="output-section" id="output-section" style="display:none">
+    <label>Salvar como:</label>
+    <input
+      type="text"
+      id="output-name"
+      value="resultado.pdf"
+      placeholder="nome-do-arquivo.pdf"
+    >
+  </div>
+
+  <div class="actions">
+    <button
+      class="btn-merge"
+      id="btn-merge"
+      disabled
+      onclick="mergeFiles()"
+    >
+      Juntar PDFs
+    </button>
+
+    <button class="btn-clear" onclick="clearAll()">
+      Limpar
+    </button>
+  </div>
+
+  <div class="progress-bar" id="progress-bar">
+    <div class="progress-fill" id="progress-fill"></div>
+  </div>
+
+  <div class="status" id="status"></div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
